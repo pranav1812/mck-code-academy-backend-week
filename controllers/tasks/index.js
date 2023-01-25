@@ -39,12 +39,13 @@ const getTaskById = (req, res) => {
 const createTask = (req, res) => {
   console.log('POST: Home route hit');
   try {
-    req.body = {};
+    req.body = '';
     req.on('data', (chunk) => {
-      req.body = { ...req.body, ...JSON.parse(chunk) };
+      req.body += chunk.toString();
     });
 
     req.on('end', () => {
+      req.body = JSON.parse(req.body);
       let { task } = req.body;
       const schemaVerification = verifyTaskScema(task);
       if (!schemaVerification) {
@@ -68,11 +69,12 @@ const updateTask = (req, res) => {
   try {
     console.log('PUT request hit');
     const { id } = req;
-    req.body = {};
+    req.body = '';
     req.on('data', (chunk) => {
-      req.body = { ...req.body, ...JSON.parse(chunk) };
+      req.body += chunk.toString();
     });
     req.on('end', () => {
+      req.body = JSON.parse(req.body);
       const { ...toUpdate } = req.body;
       if (!isIdPresentInTasks(id)) {
         return handleResponse(res, {}, 'Task id not found', 404);
@@ -102,12 +104,13 @@ const updateTask = (req, res) => {
 };
 
 const deleteTask = (req, res) => {
-  req.body = {};
+  req.body = '';
   const { id } = req;
   req.on('data', (chunk) => {
-    req.body = { ...req.body, ...JSON.parse(chunk) };
+    req.body += chunk.toString();
   }); // on data event has to handled even when no data is sent
   req.on('end', () => {
+    req.body = JSON.parse(req.body);
     if (!isIdPresentInTasks(id)) {
       return handleResponse(res, {}, 'Task id not found', 404);
     }
