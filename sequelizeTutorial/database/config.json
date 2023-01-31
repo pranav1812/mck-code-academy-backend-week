@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "pranav_vohra",
+    "password": "ChangeItNow+328649",
+    "database": "pranav_vohra",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "port": 5433
+  },
+  "test": {
+    "username": "pranav_vohra",
+    "password": "ChangeItNow+328649",
+    "database": "pranav_vohra",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "port": 5433
+  },
+  "production": {
+    "username": "pranav_vohra",
+    "password": "ChangeItNow+328649",
+    "database": "pranav_vohra",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "port": 5433
+  }
+}
