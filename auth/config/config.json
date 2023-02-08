@@ -1,0 +1,10 @@
+{
+  "development": {
+    "username": "pranav_vohra",
+    "password": "ChangeItNow+328649",
+    "database": "auth",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "port": 5433
+  }
+}
